@@ -1,12 +1,13 @@
 package com.sk.todo.web;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class TodoController {
-    @GetMapping("/test")
-    public String test(){
-        return "test";
+
+    @GetMapping("/todo")
+    public String todo() {
+        return "todo";
     }
 }
