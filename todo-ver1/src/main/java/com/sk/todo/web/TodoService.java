@@ -30,4 +30,8 @@ public class TodoService {
     public List<ToDo> retrieveAll(){
         return list;
     }
+
+    public ToDo findOne(long id) {
+        return list.stream().filter(todo->todo.getId() == id).findFirst().orElse(null);
+    }
 }
