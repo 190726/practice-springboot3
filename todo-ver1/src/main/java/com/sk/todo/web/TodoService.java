@@ -1,5 +1,6 @@
 package com.sk.todo.web;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -8,30 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+@RequiredArgsConstructor
 @Service
 public class TodoService {
 
-    private final List<ToDo> list = new ArrayList<>();
+    private final TodoRepository todoRepository;
+
+    private final List<Todo> list = new ArrayList<>();
     private final AtomicLong count = new AtomicLong(0L);
 
     @PostConstruct
     private void init(){
-        list.add(new ToDo(count.getAndIncrement(), "test1", LocalDateTime.now(), false ));
-        list.add(new ToDo(count.getAndIncrement(),"test2", LocalDateTime.now(), false ));
-        list.add(new ToDo(count.getAndIncrement(),"test3", LocalDateTime.now(), false ));
+        todoRepository.save(new Todo(count.getAndIncrement(), "test1", LocalDateTime.now(), false ));
+        todoRepository.save(new Todo(count.getAndIncrement(), "test2", LocalDateTime.now(), false ));
+        todoRepository.save(new Todo(count.getAndIncrement(), "test3", LocalDateTime.now(), false ));
     }
 
-    public ToDo save(ToDo todo) {
-        todo.id(count.getAndIncrement());
-        list.add(todo);
-        return todo;
+    public Todo save(Todo todo) {
+        return todoRepository.save(todo);
     }
 
-    public List<ToDo> retrieveAll(){
-        return list;
+    public List<Todo> retrieveAll(){
+        return todoRepository.findAll();
     }
 
-    public ToDo findOne(long id) {
-        return list.stream().filter(todo->todo.getId() == id).findFirst().orElse(null);
+    public Todo findOne(long id) {
+        return todoRepository.findById(id).orElse(null);
     }
 }
