@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CafeKiosk {
+
     private final List<Beverage> beverages = new ArrayList<>();
 
-    public void add (Beverage bevarage) {
-        beverages.add(bevarage);
+    public void add (Beverage beverage) {
+        beverages.add(beverage);
     }
 
-    public void remove(Beverage bevarage) {
-        beverages.remove(bevarage);
+    public void remove(Beverage beverage) {
+        beverages.remove(beverage);
     }
 
     public void clear(){
@@ -23,9 +24,8 @@ public class CafeKiosk {
 
     public Integer totalCalculatePrice() {
         return  beverages.stream()
-                .map(Beverage::getPrice)
-                .reduce(Integer::sum)
-                .orElse(0);
+                .mapToInt(Beverage::getPrice)
+                .sum();
     }
 
     public Order createOrder() {
