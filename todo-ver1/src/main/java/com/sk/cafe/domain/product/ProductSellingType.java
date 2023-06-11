@@ -19,7 +19,7 @@ public enum ProductSellingType {
     /**
      * 진열 가능 상태 목록 반환
      */
-    public List<ProductSellingType> forDisplay(){
+    public static List<ProductSellingType> forDisplay(){
         return List.of(SELLING, HOLD);
     }
 }
