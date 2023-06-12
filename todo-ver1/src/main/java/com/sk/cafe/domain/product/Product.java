@@ -13,16 +13,16 @@ import javax.persistence.*;
 public class Product extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String productNumber;
 
     @Enumerated(EnumType.STRING)
-    private ProductType productType;
+    private ProductType type;
 
     @Enumerated(EnumType.STRING)
-    private ProductSellingType productSellingType;
+    private ProductSellingStatus sellingStatus;
 
     private String name;
 

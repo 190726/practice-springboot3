@@ -2,14 +2,13 @@ package com.sk.cafe.domain.product.dto;
 
 
 import com.sk.cafe.domain.product.Product;
-import com.sk.cafe.domain.product.ProductSellingType;
+import com.sk.cafe.domain.product.ProductSellingStatus;
 import com.sk.cafe.domain.product.ProductType;
 import lombok.Builder;
-import lombok.Getter;
 
-@Getter
-public record ProductResponse(Long id, String productNumber, ProductType productType,
-                              ProductSellingType productSellingType, String name, int price) {
+
+public record ProductResponse(Long id, String productNumber, ProductType type,
+                              ProductSellingStatus sellingStatus, String name, int price) {
 
     @Builder
     public ProductResponse {
@@ -19,8 +18,8 @@ public record ProductResponse(Long id, String productNumber, ProductType product
         return ProductResponse.builder()
                 .id(product.getId())
                 .productNumber(product.getProductNumber())
-                .productType(product.getProductType())
-                .productSellingType(product.getProductSellingType())
+                .type(product.getType())
+                .sellingStatus(product.getSellingStatus())
                 .name(product.getName())
                 .price(product.getPrice())
                 .build();

@@ -1,6 +1,5 @@
 package com.sk.cafe.domain.product;
 
-import com.sk.cafe.domain.product.dto.ProductResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +13,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * from product
      * where selling_status in ('SELLING', 'HOLD');
      */
-    List<Product> findAllBySellingTypeIn(List<ProductSellingType> productSellingTypes);
+    List<Product> findAllBySellingStatusIn(List<ProductSellingStatus> productSellingStatuses);
 }

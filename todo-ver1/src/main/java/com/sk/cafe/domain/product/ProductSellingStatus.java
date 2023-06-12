@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public enum ProductSellingType {
+public enum ProductSellingStatus {
 
     SELLING("판매중"),
     HOLD("판매보류"),
@@ -19,7 +19,7 @@ public enum ProductSellingType {
     /**
      * 진열 가능 상태 목록 반환
      */
-    public static List<ProductSellingType> forDisplay(){
+    public static List<ProductSellingStatus> forDisplay(){
         return List.of(SELLING, HOLD);
     }
 }
