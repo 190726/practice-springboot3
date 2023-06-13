@@ -9,12 +9,18 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Getter
+@SequenceGenerator(
+        name="SEQ_GENERATOR",
+        sequenceName = "PRODUCT_SEQ",
+        initialValue = 1,
+        allocationSize = 10
+)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Product extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GENERATOR")
     private Long id;
 
     private String productNumber;
