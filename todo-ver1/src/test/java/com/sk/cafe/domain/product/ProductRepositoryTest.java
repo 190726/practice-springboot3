@@ -20,7 +20,6 @@ class ProductRepositoryTest {
     @Autowired
     ProductRepository productRepository;
 
-
     @DisplayName("원하는 판매상태를 가진 상품을 조회한다.")
     @Test
     void findAllBySellingStatusIn(){

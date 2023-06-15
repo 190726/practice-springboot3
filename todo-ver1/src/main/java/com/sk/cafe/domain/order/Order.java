@@ -1,12 +1,14 @@
 package com.sk.cafe.domain.order;
 
 import com.sk.cafe.domain.BaseEntity;
+import com.sk.cafe.domain.orderproduct.OrderProduct;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @SequenceGenerator(
@@ -30,4 +32,7 @@ public class Order extends BaseEntity {
     private int totalPrice;
 
     private LocalDateTime registeredDateTime;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderProduct> orderProducts;
 }
